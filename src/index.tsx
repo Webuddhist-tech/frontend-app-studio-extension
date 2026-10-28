@@ -11,8 +11,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 
-import Header from '@edx/frontend-component-header';
-import { FooterSlot } from '@edx/frontend-component-footer';
+import { StudioHeader } from '@edx/frontend-component-header';
+import { StudioFooterSlot } from '@edx/frontend-component-footer';
 import messages from './i18n';
 import ExamplePage from './example/ExamplePage';
 
@@ -27,9 +27,9 @@ subscribe(APP_READY, () => {
   root.render(
     <AppProvider>
       <QueryClientProvider client={queryClient}>
-        <Header />
+        <StudioHeader title="" isHiddenMainMenu isNewHomePage={false} />
         <ExamplePage />
-        <FooterSlot />
+        <StudioFooterSlot />
       </QueryClientProvider>
     </AppProvider>,
     document.getElementById('root'),
@@ -42,4 +42,5 @@ subscribe(APP_INIT_ERROR, (error: { message: any }) => {
 
 initialize({
   messages,
+  requireAuthenticatedUser: true,
 });
